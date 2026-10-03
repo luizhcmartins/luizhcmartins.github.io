@@ -1,8 +1,0 @@
----
-layout: default
----
-{% include banner.html titulo=page.title imagem=page.banner %}
-<article class="texto">
-  {% if page.categorias %}<p class="texto__cats">{{ page.categorias | join: " - " }}</p>{% endif %}
-  {{ content }}
-</article>
