@@ -1,0 +1,76 @@
+:root {
+  --fundo: #f0ebe5;
+  --tinta: #0a1a1f;
+  --claro: #f0ebe5;
+  --margem: clamp(1.25rem, 5.5vw, 5rem);
+  --recuo: clamp(1.25rem, 6.2vw, 5.5rem);
+  --topo: 4.5rem; /* distância entre o topo do bloco e o primeiro texto */
+  --fs-titulo: clamp(2.5rem, 5vw, 4.5rem);
+  --fs-menu: clamp(1.9rem, 3.4vw, 3rem);
+  --fs-texto: clamp(1rem, 1.55vw, 1.4rem);
+}
+
+* { box-sizing: border-box; margin: 0; }
+body { background: var(--fundo); color: var(--tinta); font: 300 var(--fs-texto)/1.4 "Jost", system-ui, sans-serif; }
+a { color: inherit; text-decoration: none; transition: opacity .2s; }
+a:hover { opacity: .55; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.pagina { max-width: 1440px; margin: 0 auto; padding: 4rem var(--margem) 2rem; }
+
+/* ---------- Blocos decorativos (trocáveis por <img class="decorativo">) ---------- */
+.decorativo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--bloco, var(--tinta)); }
+
+.capa { --bloco: #04141a; position: relative; aspect-ratio: 11 / 16; color: var(--claro); }
+.capa--laranja { --bloco: #f2663a; }
+.capa--azul    { --bloco: #0a1fe0; }
+.capa--vinho   { --bloco: #9b0e2f; }
+.capa__titulo { position: relative; padding: var(--topo) 1rem 0 var(--recuo); font-size: var(--fs-titulo); font-weight: 300; line-height: 1.1; }
+.capa--alta .capa__titulo { text-transform: uppercase; font-weight: 400; }
+
+.banner { --bloco: #f2b705; position: relative; height: 9.5rem; display: flex; align-items: center; color: var(--claro); }
+.banner__titulo { position: relative; padding-left: var(--recuo); font-size: var(--fs-titulo); font-weight: 300; }
+
+/* ---------- Início, listas e contato ---------- */
+.dividida { display: grid; grid-template-columns: 46% 1fr; column-gap: clamp(2rem, 11.5vw, 10.5rem); align-items: start; }
+.dividida > .capa { position: sticky; top: 4rem; } /* a capa acompanha a rolagem quando a lista cresce */
+
+.menu, .lista { padding: var(--topo) 0 0; list-style: none; }
+.menu a { display: block; font-size: var(--fs-menu); line-height: 1.6; }
+.lista li { margin-bottom: 2.2rem; }
+.lista__titulo { display: block; font-size: var(--fs-menu); line-height: 1.15; }
+.lista__cats { display: block; font-style: italic; }
+
+/* ---------- Página de projeto ---------- */
+.projeto { display: grid; grid-template-columns: 1.9fr 1fr; gap: 3rem; padding: 4.5rem var(--recuo) 0; }
+.projeto h2, .galeria h2 { font-size: var(--fs-menu); font-weight: 300; line-height: 1.2; margin-bottom: 1.1rem; }
+.projeto__texto { font-style: italic; max-width: 46rem; }
+.projeto__texto p + p { margin-top: 1em; }
+.projeto__acesso { text-align: center; }
+.botao { display: block; margin-top: 2.5rem; font-size: var(--fs-menu); font-weight: 700; text-transform: uppercase; }
+
+.galeria { padding: 4.5rem var(--recuo) 0; }
+.galeria__grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: clamp(1.5rem, 4.5vw, 4rem); }
+.galeria__item { aspect-ratio: 3 / 4; background: var(--bloco, #0a1fe0); }
+.galeria__item:nth-child(3n+2) { --bloco: #9b0e2f; }
+.galeria__item:nth-child(3n+3) { --bloco: #ff4796; }
+.galeria__item img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Página de texto ---------- */
+.texto { max-width: 42rem; margin: 0 auto; padding-top: 4.5rem; font-size: clamp(1.1rem, 1.6vw, 1.3rem); font-weight: 400; line-height: 1.7; }
+.texto__cats { font-style: italic; font-weight: 300; margin-bottom: 2rem; }
+.texto p { margin-bottom: 1.2em; }
+.texto h2 { font-size: var(--fs-menu); font-weight: 300; line-height: 1.2; margin: 2.5rem 0 1rem; }
+.texto blockquote { padding-left: 1.5rem; border-left: 2px solid var(--tinta); font-style: italic; margin: 0 0 1.2em; }
+
+.rodape { display: flex; gap: 1.75rem; max-width: 1440px; margin: 0 auto; padding: 4rem var(--margem) 2rem; font-size: .95rem; }
+.rodape a { opacity: .6; }
+.rodape a:hover { opacity: 1; }
+
+/* ---------- Telas estreitas ---------- */
+@media (max-width: 48rem) {
+  :root { --topo: 2.5rem; }
+  .dividida, .projeto { grid-template-columns: 1fr; }
+  .dividida > .capa { position: relative; top: 0; aspect-ratio: 4 / 3; }
+  .projeto__acesso { text-align: left; }
+}
