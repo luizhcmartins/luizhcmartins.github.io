@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{% include banner.html titulo=page.title imagem=page.banner %}
+<section class="projeto">
+  <div class="projeto__sobre">
+    <h2>Sobre</h2>
+    <div class="projeto__texto">{{ content }}</div>
+  </div>
+  <div class="projeto__acesso">
+    <h2>{{ page.rotulo_acesso | default: "Acesso à máquina" }}</h2>
+    <a class="botao" href="{{ page.acesso | relative_url }}">{{ page.title }}</a>
+  </div>
+</section>
+<section class="galeria">
+  <h2>Galeria</h2>
+  <div class="galeria__grade">
+    {% if page.galeria.size > 0 %}
+      {% for img in page.galeria %}
+      <figure class="galeria__item"><img src="{{ img | relative_url }}" alt="" loading="lazy"></figure>
+      {% endfor %}
+    {% else %}
+      {% for i in (1..3) %}<div class="galeria__item"></div>{% endfor %}
+      <!-- <figure class="galeria__item"><img src="{{ '/assets/img/projetos/NOME/arte-1.jpg' | relative_url }}" alt=""></figure> -->
+    {% endif %}
+  </div>
+</section>
