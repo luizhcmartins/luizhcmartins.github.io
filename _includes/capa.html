@@ -1,5 +1,0 @@
-<div class="capa capa--{{ include.cor | default: 'noite' }}{% if include.alta %} capa--alta{% endif %}">
-  {% if include.imagem %}<img class="decorativo" src="{{ include.imagem | relative_url }}" alt="">{% else %}<div class="decorativo"></div>{% endif %}
-  <!-- <img class="decorativo" src="{{ '/assets/img/capa.jpg' | relative_url }}" alt=""> -->
-  <h1 class="capa__titulo">{{ include.titulo }}</h1>
-</div>
