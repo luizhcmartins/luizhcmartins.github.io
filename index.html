@@ -1,0 +1,13 @@
+---
+layout: default
+title: Início
+capa: /assets/img/arteinicial.jpg
+---
+<section class="dividida">
+  {% include capa.html titulo=site.title cor="noite" alta=true imagem=page.capa %}
+  <nav class="menu">
+    <a href="{{ '/projetos/' | relative_url }}">Projetos</a>
+    <a href="{{ '/escritos/' | relative_url }}">Escritos</a>
+    <a href="{{ '/contato/' | relative_url }}">Contato</a>
+  </nav>
+</section>
